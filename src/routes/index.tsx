@@ -34,7 +34,27 @@ const NAV = [
 const PHONE = "+917742469032";
 const WHATSAPP = `https://wa.me/917742469032`;
 
+function useScrollReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("reveal-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
 function Home() {
+  useScrollReveal();
   return (
     <div id="home" className="min-h-screen text-foreground">
       <Header />
