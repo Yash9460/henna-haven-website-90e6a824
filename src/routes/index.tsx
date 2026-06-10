@@ -305,7 +305,7 @@ function Gallery() {
           {filtered.map((g, i) => (
             <div
               key={`${active}-${i}`}
-              className="group relative overflow-hidden rounded-2xl border border-border animate-fade-in opacity-0"
+              className="group relative overflow-hidden rounded-2xl border border-border gallery-item"
               style={{ animationDelay: `${i * 80}ms`, animationFillMode: "forwards" }}
             >
               <img src={g.src} alt={`${g.cat} mehndi design`} loading="lazy" className="w-full h-full object-cover aspect-[4/5] group-hover:scale-110 transition-transform duration-700" />
