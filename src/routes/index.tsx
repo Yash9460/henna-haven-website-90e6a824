@@ -167,7 +167,9 @@ function Hero() {
         </div>
         <div className="relative hidden lg:block">
           <div className="relative w-full aspect-square max-w-md ml-auto animate-float">
-            <div className="absolute inset-0 rounded-full bg-gold/20 blur-3xl" />
+            <div className="absolute inset-0 rounded-full bg-gold/20 blur-3xl animate-glow" />
+            <div className="absolute -inset-4 rounded-full border border-gold/20 animate-spin-slow" />
+            <div className="absolute -inset-10 rounded-full border border-gold/10 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "30s" }} />
             <img src={logo} alt="Logo" className="relative w-full h-full object-cover rounded-full ring-1 ring-gold/40 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]" />
           </div>
         </div>
@@ -242,7 +244,7 @@ function Services() {
   return (
     <section id="services" className="py-24 md:py-32 bg-card/40 border-y border-border">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-xs uppercase tracking-[0.3em] text-gold">Our Services</span>
           <h2 className="font-display text-4xl md:text-5xl mt-3 font-semibold">A design for <span className="text-gold-gradient italic">every occasion</span></h2>
         </div>
