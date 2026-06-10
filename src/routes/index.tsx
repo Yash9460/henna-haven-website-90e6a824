@@ -242,22 +242,58 @@ function Services() {
   );
 }
 
+type Category = "All" | "Bridal" | "Arabic" | "Simple" | "Sangeet";
+const GALLERY: { src: string; cat: Exclude<Category, "All"> }[] = [
+  { src: g1, cat: "Bridal" },
+  { src: g2, cat: "Arabic" },
+  { src: g3, cat: "Bridal" },
+  { src: g4, cat: "Simple" },
+  { src: g5, cat: "Sangeet" },
+  { src: g6, cat: "Arabic" },
+];
+const CATS: Category[] = ["All", "Bridal", "Arabic", "Simple", "Sangeet"];
+
 function Gallery() {
-  const imgs = [g1, g2, g3, g4, g5, g6];
+  const [active, setActive] = useState<Category>("All");
+  const filtered = active === "All" ? GALLERY : GALLERY.filter((g) => g.cat === active);
   return (
     <section id="gallery" className="py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 reveal">
           <span className="text-xs uppercase tracking-[0.3em] text-gold">Portfolio</span>
           <h2 className="font-display text-4xl md:text-5xl mt-3 font-semibold">Signature <span className="text-gold-gradient italic">creations</span></h2>
+          <p className="mt-4 text-sm text-muted-foreground">Explore designs by category</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
-          {imgs.map((src, i) => (
-            <div key={i} className={`group relative overflow-hidden rounded-2xl border border-border ${i === 0 ? "md:row-span-2 md:col-span-1" : ""}`}>
-              <img src={src} alt={`Mehndi design ${i + 1}`} loading="lazy" className="w-full h-full object-cover aspect-[4/5] group-hover:scale-110 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-0 group-hover:opacity-100 transition" />
-              <div className="absolute bottom-4 left-4 text-gold opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0 duration-300">
-                <Sparkles className="w-5 h-5" />
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+          {CATS.map((c) => (
+            <button
+              key={c}
+              onClick={() => setActive(c)}
+              className={`relative px-5 py-2 rounded-full text-xs md:text-sm uppercase tracking-widest border transition-all duration-300 ${
+                active === c
+                  ? "btn-gold border-transparent scale-105"
+                  : "border-border text-foreground/70 hover:border-gold/60 hover:text-gold"
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+        <div key={active} className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+          {filtered.map((g, i) => (
+            <div
+              key={`${active}-${i}`}
+              className="group relative overflow-hidden rounded-2xl border border-border animate-fade-in opacity-0"
+              style={{ animationDelay: `${i * 80}ms`, animationFillMode: "forwards" }}
+            >
+              <img src={g.src} alt={`${g.cat} mehndi design`} loading="lazy" className="w-full h-full object-cover aspect-[4/5] group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-500">
+                <span className="text-gold font-display text-lg">{g.cat}</span>
+                <Sparkles className="w-5 h-5 text-gold animate-shimmer" />
+              </div>
+              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/70 backdrop-blur border border-gold/30 text-[10px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 transition duration-500">
+                {g.cat}
               </div>
             </div>
           ))}
@@ -266,6 +302,7 @@ function Gallery() {
     </section>
   );
 }
+
 
 function Testimonials() {
   const list = [
