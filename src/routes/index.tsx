@@ -11,14 +11,6 @@ import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Kapil Mehandi Art Jaipur — Best Bridal Mehndi Artist" },
-      { name: "description", content: "Award-winning bridal & celebrity mehndi artist in Jaipur. Destination weddings, sangeet, baby shower & engagement mehndi designs by Kapil Mehandi Art." },
-      { property: "og:title", content: "Kapil Mehandi Art — Best Bridal Mehndi Artist in Jaipur" },
-      { property: "og:description", content: "Celebrity & bridal mehndi artist serving Jaipur and destination weddings worldwide." },
-    ],
-  }),
   component: Home,
 });
 
