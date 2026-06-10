@@ -456,7 +456,7 @@ function Footer() {
 
 function FloatingWhatsApp() {
   return (
-    <a href={WHATSAPP} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full btn-gold flex items-center justify-center shadow-2xl">
+    <a href={WHATSAPP} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full btn-gold flex items-center justify-center shadow-2xl animate-glow hover:scale-110 transition-transform">
       <MessageCircle className="w-6 h-6" />
     </a>
   );
