@@ -305,7 +305,7 @@ function Gallery() {
           {filtered.map((g, i) => (
             <div
               key={`${active}-${i}`}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card gallery-item"
+              className="group relative overflow-hidden rounded-2xl border-2 border-red-500 bg-pink-500 gallery-item"
               style={{ aspectRatio: "4 / 5", animationDelay: `${i * 80}ms` }}
             >
               <img
