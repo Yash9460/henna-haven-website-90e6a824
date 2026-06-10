@@ -305,10 +305,14 @@ function Gallery() {
           {filtered.map((g, i) => (
             <div
               key={`${active}-${i}`}
-              className="group relative overflow-hidden rounded-2xl border border-border animate-fade-in opacity-0"
-              style={{ animationDelay: `${i * 80}ms`, animationFillMode: "forwards" }}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card gallery-item"
+              style={{ aspectRatio: "4 / 5", animationDelay: `${i * 80}ms` }}
             >
-              <img src={g.src} alt={`${g.cat} mehndi design`} loading="lazy" className="w-full h-full object-cover aspect-[4/5] group-hover:scale-110 transition-transform duration-700" />
+              <img
+                src={g.src}
+                alt={`${g.cat} mehndi design`}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-500">
                 <span className="text-gold font-display text-lg">{g.cat}</span>
